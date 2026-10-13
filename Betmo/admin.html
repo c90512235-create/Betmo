@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101713">
+  <title>BETMO | Master Admin Demo</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b100e;
+      --panel: #151d19;
+      --border: #29372e;
+      --green: #39e879;
+      --muted: #9eada3;
+      --text: #f4f8f5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 6%;
+      background: #101713;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      color: var(--text);
+      font-size: 26px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--green); }
+
+    header a.back {
+      color: var(--green);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    main {
+      width: min(900px, 92%);
+      margin: 36px auto;
+    }
+
+    .notice {
+      padding: 14px 16px;
+      border: 1px solid #8b7030;
+      background: #302716;
+      border-radius: 10px;
+      color: #ffe5a0;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .panel {
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 { font-size: clamp(27px, 5vw, 38px); }
+    h2 { font-size: 21px; margin-top: 0; }
+
+    .muted { color: var(--muted); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .stat {
+      background: #101713;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px;
+      min-width: 0;
+    }
+
+    .stat small {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(18px, 3vw, 25px);
+      color: var(--green);
+      overflow-wrap: anywhere;
+    }
+
+    .field { margin: 18px 0; }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0b100e;
+      color: var(--text);
+      font: inherit;
+    }
+
+    input:focus, select:focus {
+      outline: 2px solid var(--green);
+      outline-offset: 1px;
+    }
+
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .check-row input {
+      width: auto;
+      margin-top: 5px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 17px;
+      background: var(--green);
+      color: #07110a;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      color: var(--text);
+      background: #29372e;
+    }
+
+    button:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 3px;
+    }
+
+    #message {
+      min-height: 24px;
+      color: var(--green);
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 550px) {
+      header { padding: 16px 4%; }
+      main { width: 94%; margin-top: 24px; }
+      .panel { padding: 18px; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="index.html">BET<span>MO</span></a>
+    <a class="back" href="index.html">← Main website</a>
+  </header>
+
+  <main>
+    <p class="muted">PLATFORM MANAGEMENT / PROMOTIONS</p>
+    <h1>Master Admin</h1>
+    <p class="muted">Configure the proposed BETMO digital-feature discount.</p>
+
+    <div class="notice">
+      DEMO ONLY: This page has no administrator authentication.
+      Its settings are saved only in this browser. Anyone who knows
+      the URL can open it. Do not use it to manage real customer
+      accounts, payments, or live promotions.
+    </div>
+
+    <section class="panel">
+      <h2>Promotion overview</h2>
+      <div class="stats">
+        <div class="stat">
+          <small>Discount</small>
+          <strong id="summaryDiscount">10%</strong>
+        </div>
+        <div class="stat">
+          <small>Promo code</small>
+          <strong id="summaryCode">BETMO70</strong>
+        </div>
+        <div class="stat">
+          <small>Duration</small>
+          <strong id="summaryDuration">70 days</strong>
+        </div>
+      </div>
+      <p id="summaryStatus" class="muted">Status: Draft</p>
+      <p id="summaryDates" class="muted">No activation date set.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Discount settings</h2>
+
+      <form id="promotionForm">
+        <div class="field">
+          <label for="discount">Discount percentage</label>
+          <input id="discount" type="number" min="1" max="90"
+            step="1" value="10" required>
+        </div>
+
+        <div class="field">
+          <label for="promoCode">Promotion code</label>
+          <input id="promoCode" type="text" value="BETMO70"
+            maxlength="30" pattern="[A-Za-z0-9_-]+"
+            required>
+        </div>
+
+        <div class="field">
+          <label for="duration">Duration</label>
+          <select id="duration">
+            <option value="7">7 days</option>
+            <option value="30">30 days</option>
+            <option value="70" selected>70 days</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="appliesTo">Applies to</label>
+          <select id="appliesTo">
+            <option value="subscriptions">Subscriptions</option>
+            <option value="digital">Eligible digital features</option>
+            <option value="both" selected>
+              Subscriptions and eligible digital features
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="maxUses">Maximum uses (0 = no limit in this demo)</label>
+          <input id="maxUses" type="number" min="0"
+            step="1" value="100" required>
+        </div>
+
+        <label class="check-row">
+          <input id="enabled" type="checkbox">
+          <span>Enable this promotion in the local demo.</span>
+        </label>
+
+        <div class="buttons">
+          <button type="submit">Save demo settings</button>
+          <button type="button" class="secondary" id="activate">
+            Start 70-day demo period
+          </button>
+          <button type="button" class="secondary" id="reset">
+            Reset draft
+          </button>
+        </div>
+      </form>
+
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>How the discount is calculated</h2>
+      <p class="muted">
+        Example for an eligible digital purchase of UGX 10,000:
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <small>Original price</small>
+          <strong>UGX 10,000</strong>
+        </div>
+        <div class="stat">
+          <small>Discount at 10%</small>
+          <strong>UGX 1,000</strong>
+        </div>
+        <div class="stat">
+          <small>Illustrative final price</small>
+          <strong>UGX 9,000</strong>
+        </div>
+      </div>
+      <p class="muted">
+        The example is illustrative only. This page does not charge
+        customers, change subscription prices, or apply discounts
+        to the live website.
+      </p>
+    </section>
+  </main>
+
+  <footer>BETMO · Master Admin demonstration</footer>
+
+  <script>
+    const STORAGE_KEY = "betmo-promotion-demo-v1";
+    const form = document.getElementById("promotionForm");
+    const message = document.getElementById("message");
+
+    const fields = {
+      discount: document.getElementById("discount"),
+      promoCode: document.getElementById("promoCode"),
+      duration: document.getElementById("duration"),
+      appliesTo: document.getElementById("appliesTo"),
+      maxUses: document.getElementById("maxUses"),
+      enabled: document.getElementById("enabled")
+    };
+
+    function getSettings() {
+      return {
+        discount: Number(fields.discount.value),
+        promoCode: fields.promoCode.value.trim().toUpperCase(),
+        duration: Number(fields.duration.value),
+        appliesTo: fields.appliesTo.value,
+        maxUses: Number(fields.maxUses.value),
+        enabled: fields.enabled.checked,
+        startDate: null,
+        endDate: null
+      };
+    }
+
+    function loadSettings() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return null;
+
+        const parsed = JSON.parse(saved);
+        if (!parsed || typeof parsed !== "object") return null;
+
+        return parsed;
+      } catch {
+        message.textContent =
+          "Could not read saved demo settings in this browser.";
+        return null;
+      }
+    }
+
+    function showSettings(settings) {
+      fields.discount.value = settings.discount;
+      fields.promoCode.value = settings.promoCode;
+      fields.duration.value = String(settings.duration);
+      fields.appliesTo.value = settings.appliesTo;
+      fields.maxUses.value = settings.maxUses;
+      fields.enabled.checked = settings.enabled;
+
+      document.getElementById("summaryDiscount").textContent =
+        settings.discount + "%";
+      document.getElementById("summaryCode").textContent =
+        settings.promoCode;
+      document.getElementById("summaryDuration").textContent =
+        settings.duration + " days";
+
+      const status = settings.enabled ? "Demo enabled" : "Draft";
+      document.getElementById("summaryStatus").textContent =
+        "Status: " + status;
+
+      const dates = document.getElementById("summaryDates");
+      if (settings.startDate && settings.endDate) {
+        dates.textContent =
+          "Demo period: " +
+          new Date(settings.startDate).toLocaleString() +
+          " – " +
+          new Date(settings.endDate).toLocaleString();
+      } else {
+        dates.textContent = "No activation date set.";
+      }
+    }
+
+    function saveSettings(settings) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+        showSettings(settings);
+        return true;
+      } catch {
+        message.textContent =
+          "Saving failed. Your browser may block local storage.";
+        return false;
+      }
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const previous = loadSettings();
+      const settings = getSettings();
+
+      if (previous) {
+        settings.startDate = previous.startDate || null;
+        settings.endDate = previous.endDate || null;
+      }
+
+      if (saveSettings(settings)) {
+        message.textContent =
+          "Demo settings saved in this browser only.";
+      }
+    });
+
+    document.getElementById("activate").addEventListener("click", function () {
+      if (!form.reportValidity()) return;
+
+      const settings = getSettings();
+      const now = Date.now();
+
+      settings.startDate = new Date(now).toISOString();
+      settings.endDate = new Date(
+        now + settings.duration * 24 * 60 * 60 * 1000
+      ).toISOString();
+
+      settings.enabled = true;
+      fields.enabled.checked = true;
+
+      if (saveSettings(settings)) {
+        message.textContent =
+          "Demo period started locally. It is not active for customers.";
+      }
+    });
+
+    document.getElementById("reset").addEventListener("click", function () {
+      const defaults = {
+        discount: 10,
+        promoCode: "BETMO70",
+        duration: 70,
+        appliesTo: "both",
+        maxUses: 100,
+        enabled: false,
+        startDate: null,
+        endDate: null
+      };
+
+      if (saveSettings(defaults)) {
+        message.textContent =
+          "Demo draft reset. No live promotion was changed.";
+      }
+    });
+
+    const initialSettings = loadSettings() || {
+      discount: 10,
+      promoCode: "BETMO70",
+      duration: 70,
+      appliesTo: "both",
+      maxUses: 100,
+      enabled: false,
+      startDate: null,
+      endDate: null
+    };
+
+    showSettings(initialSettings);
+  </script>
+</body>
+</html>
