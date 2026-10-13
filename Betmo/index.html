@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101713">
+  <meta name="description" content="BETMO — Your home for sports news, match information and games.">
+  <title>BETMO | Sports & Games</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#" aria-label="BETMO home">BET<span>MO</span></a>
+    <button class="menu-button" id="menuButton" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav id="navigation">
+      <a href="#sports">Sports</a>
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">WELCOME TO BETMO</p>
+        <h1>Your world.<br><span>Your game.</span></h1>
+        <p>Explore football, follow match information and enjoy browser games in one place.</p>
+        <a class="primary-button" href="#sports">Explore sports</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="ball">⚽</div>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sports">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">STAY IN THE GAME</p>
+          <h2>Sports centre</h2>
+        </div>
+        <span class="status">MATCH INFORMATION</span>
+      </div>
+      <div class="sports-grid">
+        <article class="sport-card">
+          <span class="sport-icon">⚽</span>
+          <h3>Football</h3>
+          <p>Explore fixtures, scores and football news.</p>
+          <span class="coming-soon">Data connection coming soon</span>
+        </article>
+        <article class="sport-card">
+          <span class="sport-icon">🏀</span>
+          <h3>Basketball</h3>
+          <p>Follow basketball matches and results.</p>
+          <span class="coming-soon">Coming soon</span>
+        </article>
+        <article class="sport-card">
+          <span class="sport-icon">🎾</span>
+          <h3>Tennis</h3>
+          <p>Discover tennis events and match updates.</p>
+          <span class="coming-soon">Coming soon</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section games-section" id="games">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PLAY FOR FUN</p>
+          <h2>Games zone</h2>
+        </div>
+      </div>
+      <div class="games-grid">
+        <a class="game-card" href="#puzzle">
+          <span>🧩</span><h3>Number puzzle</h3><p>Challenge your mind.</p>
+        </a>
+        <article class="game-card">
+          <span>🏎️</span><h3>Speed racing</h3><p>Racing game coming soon.</p>
+        </article>
+        <article class="game-card">
+          <span>🕹️</span><h3>Arcade zone</h3><p>More games coming soon.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section puzzle-section" id="puzzle">
+      <p class="eyebrow">A QUICK CHALLENGE</p>
+      <h2>Number puzzle</h2>
+      <p>Arrange the numbers from 1 to 8, leaving the last square empty.</p>
+      <div class="puzzle-board" id="puzzleBoard" aria-label="Number puzzle board"></div>
+      <p id="puzzleMessage" role="status">Moves: 0</p>
+      <button class="primary-button" id="restartPuzzle">Restart puzzle</button>
+    </section>
+
+    <section class="section about-section" id="about">
+      <p class="eyebrow">OUR VISION</p>
+      <h2>Welcome to BETMO</h2>
+      <p>We're building a simple, accessible destination for sports information and enjoyable browser games.</p>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#">BET<span>MO</span></a>
+    <p>Sports information and games for entertainment.</p>
+    <p>© <span id="year"></span> BETMO</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
